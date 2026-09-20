@@ -6,6 +6,9 @@ table Ventes
 	measure 'Nb commandes' = DISTINCTCOUNT ( Ventes[NumCommande] )
 		formatString: #,0
 
+	measure 'Panier moyen' = DIVIDE ( [CA HT], [Nb commandes] )
+		formatString: #,0.00 €
+
 	column NumCommande
 		dataType: string
 		sourceColumn: NumCommande
