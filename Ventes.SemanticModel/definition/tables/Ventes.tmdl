@@ -1,6 +1,10 @@
 table Ventes
 
-	measure 'CA HT' = SUM ( Ventes[MontantHT] )
+	measure 'CA HT' =
+			CALCULATE (
+			    SUM ( Ventes[MontantHT] ),
+			    Ventes[Statut] <> "Annulée"
+			)
 		formatString: #,0 €
 
 	measure 'Nb commandes' = DISTINCTCOUNT ( Ventes[NumCommande] )
