@@ -13,6 +13,9 @@ table Ventes
 	measure 'Panier moyen' = DIVIDE ( [CA HT], [Nb commandes] )
 		formatString: #,0.00 €
 
+	measure 'CA HT N-1' = CALCULATE ( [CA HT], SAMEPERIODLASTYEAR ( Calendrier[Date] ) )
+		formatString: #,0 €
+
 	column NumCommande
 		dataType: string
 		sourceColumn: NumCommande
