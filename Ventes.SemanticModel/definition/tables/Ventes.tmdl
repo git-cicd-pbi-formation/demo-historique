@@ -6,15 +6,19 @@ table Ventes
 			    Ventes[Statut] <> "Annulée"
 			)
 		formatString: #,0 €
+		displayFolder: Chiffre d'affaires
 
 	measure 'Nb commandes' = DISTINCTCOUNT ( Ventes[NumCommande] )
 		formatString: #,0
+		displayFolder: Volumes
 
 	measure 'Panier moyen' = DIVIDE ( [CA HT], [Nb commandes] )
 		formatString: #,0.00 €
+		displayFolder: Chiffre d'affaires
 
 	measure 'CA HT N-1' = CALCULATE ( [CA HT], SAMEPERIODLASTYEAR ( Calendrier[Date] ) )
 		formatString: #,0 €
+		displayFolder: Chiffre d'affaires
 
 	column NumCommande
 		dataType: string
