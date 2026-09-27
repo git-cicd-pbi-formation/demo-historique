@@ -1,10 +1,6 @@
 table Ventes
 
-	measure 'CA HT' =
-			CALCULATE (
-			    SUM ( Ventes[MontantHT] ),
-			    Ventes[Statut] <> "Annulée"
-			)
+	measure 'CA HT' = SUM ( Ventes[MontantHT] )
 		formatString: #,0 €
 		displayFolder: Chiffre d'affaires
 
