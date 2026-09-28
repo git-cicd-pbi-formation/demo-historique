@@ -16,6 +16,14 @@ table Ventes
 		formatString: #,0 €
 		displayFolder: Chiffre d'affaires
 
+	measure 'Taux d''annulation' =
+			DIVIDE (
+			    CALCULATE ( [Nb commandes], Ventes[Statut] = "Annulée" ),
+			    CALCULATE ( [Nb commandes], ALL ( Ventes[Statut] ) )
+			)
+		formatString: 0.0 %
+		displayFolder: Volumes
+
 	column NumCommande
 		dataType: string
 		sourceColumn: NumCommande
